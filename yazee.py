@@ -43,11 +43,11 @@ def score(hand):
 
     return big
 
-score((1, 2, 2))
-score([6, 2, 3])
-score((6, 6, 3, 3, 6))
-score((1, 2, 2))
-score((1, 2, 2))
+print score((1, 2, 2))
+print score([6, 2, 3])
+print score((6, 6, 3, 3, 6))
+print score((1, 2, 2))
+print score((1, 2, 2))
 
 
 
