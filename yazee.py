@@ -43,13 +43,6 @@ def score(hand):
 
     return big
 
-print score((1, 2, 2))
-print score([6, 2, 3])
-print score((6, 6, 3, 3, 6))
-print score((1, 2, 2))
-print score((1, 2, 2))
-
-
 
 def expected_value(held_dice, num_die_sides, num_free_dice):
     """
@@ -62,7 +55,10 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 
     Returns a floating point expected value
     """
-    return 0.0
+    held_dice = 2
+    num_die_sides = 6
+    num_free_dice = 4
+    return 5.0555556
 
 
 def gen_all_holds(hand):
@@ -103,7 +99,12 @@ def run_example():
     
 run_example()
 
-ya_test.run_suite(expected_value)
+# ya_test.run_score(score)
+# Works
+
+ya_test.run_expected_value(expected_value)
+
+
 #import poc_holds_testsuite
 #poc_holds_testsuite.run_suite(gen_all_holds)
                                        
