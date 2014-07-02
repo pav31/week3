@@ -7,6 +7,8 @@ Simplifications:  only allow discard and roll, only score against upper level
 # import codeskulptor
 # codeskulptor.set_timeout(20)
 
+
+
 def gen_all_sequences(outcomes, length):
     """
     Iterative function that enumerates the set of all sequences of
@@ -34,8 +36,9 @@ def score(hand):
 
     Returns an integer score
     """
-    return 0
-
+    max_value = max(hand)
+    return hand.count(max_value) * max_value
+print score((6, 4, 4, 4, 4))
 
 def expected_value(held_dice, num_die_sides, num_free_dice):
     """

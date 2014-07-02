@@ -4,6 +4,7 @@ Simplifications:  only allow discard and roll, only score against upper level
 """
 
 import random
+import ya_test
 
 def gen_all_sequences(outcomes, length):
     """
@@ -102,7 +103,7 @@ def run_example():
     
 run_example()
 
-
+ya_test.run_suite(expected_value)
 #import poc_holds_testsuite
 #poc_holds_testsuite.run_suite(gen_all_holds)
                                        
