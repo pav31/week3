@@ -4,7 +4,6 @@ https://docs.python.org/2/library/unittest.html
 Note that code is designed to be much simpler than unittest
 and does NOT replicate unittest functionality
 """
-import yazee
 
 class TestSuite:
     """
