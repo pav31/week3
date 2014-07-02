@@ -3,9 +3,6 @@ Planner for Yahtzee
 Simplifications:  only allow discard and roll, only score against upper level
 """
 
-# Used to increase the timeout, if necessary
-import codeskulptor
-codeskulptor.set_timeout(20)
 
 def gen_all_sequences(outcomes, length):
     """
