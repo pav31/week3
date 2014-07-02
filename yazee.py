@@ -3,6 +3,7 @@ Planner for Yahtzee
 Simplifications:  only allow discard and roll, only score against upper level
 """
 
+import random
 
 def gen_all_sequences(outcomes, length):
     """
@@ -31,7 +32,22 @@ def score(hand):
 
     Returns an integer score 
     """
-    return 0
+    tmp = 0
+    big = 0
+    for i in hand:
+        tmp = i * hand.count(i)
+
+        if tmp > big:
+            big = tmp
+
+    return big
+
+score((1, 2, 2))
+score([6, 2, 3])
+score((6, 6, 3, 3, 6))
+score((1, 2, 2))
+score((1, 2, 2))
+
 
 
 def expected_value(held_dice, num_die_sides, num_free_dice):
@@ -79,7 +95,7 @@ def run_example():
     Compute the dice to hold and expected score for an example hand
     """
     num_die_sides = 6
-    hand = (1, 1, 1, 5, 6)
+    hand = [random.randrange(1, 7) for i in range(6)]
     hand_score, hold = strategy(hand, num_die_sides)
     print "Best strategy for hand", hand, "is to hold", hold, "with expected score", hand_score
     
