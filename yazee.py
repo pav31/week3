@@ -40,7 +40,7 @@ def score(hand):
         if tmp > big:
             big = tmp
 
-    print(big)
+    return big
 
 score((1, 2, 2))
 score([6, 2, 3])
