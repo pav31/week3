@@ -33,10 +33,10 @@ def run_example1():
     #outcomes = set(["Red", "Green", "Blue"])
     #outcomes = set(["Sunday", "Mondy", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
 
-    length = 1
+    length = 2
     seq_outcomes = gen_all_sequences(outcomes, length)
     print "Computed", len(seq_outcomes), "sequences of", str(length), "outcomes"
-    # print "Sequences were", seq_outcomes
+    print "Sequences were", seq_outcomes
 
 
 run_example1()
@@ -50,7 +50,7 @@ def gen_sorted_sequences(outcomes, length):
     all_sequences = gen_all_sequences(outcomes, length)
     sorted_sequences = [tuple(sorted(sequence)) for sequence in all_sequences]
     return set(sorted_sequences)
-print 'gen', gen_sorted_sequences(set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), 5)
+# print 'gen', gen_sorted_sequences(set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), 5)
 
 def run_example2():
     """
