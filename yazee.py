@@ -32,7 +32,22 @@ def score(hand):
 
     Returns an integer score 
     """
-    return 0
+    tmp = 0
+    big = 0
+    for i in hand:
+        tmp = i * hand.count(i)
+
+        if tmp > big:
+            big = tmp
+
+    print(big)
+
+score((1, 2, 2))
+score([6, 2, 3])
+score((6, 6, 3, 3, 6))
+score((1, 2, 2))
+score((1, 2, 2))
+
 
 
 def expected_value(held_dice, num_die_sides, num_free_dice):
