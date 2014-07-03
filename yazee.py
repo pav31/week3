@@ -6,12 +6,13 @@ Simplifications:  only allow discard and roll, only score against upper level
 import random
 import ya_test
 
+
 def gen_all_sequences(outcomes, length):
     """
     Iterative function that enumerates the set of all sequences of
     outcomes of given length.
     """
-    
+
     answer_set = set([()])
     for dummy_idx in range(length):
         temp_set = set()
@@ -31,7 +32,7 @@ def score(hand):
 
     hand: full yahtzee hand
 
-    Returns an integer score 
+    Returns an integer score
     """
     tmp = 0
     big = 0
@@ -55,14 +56,14 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 
     Returns a floating point expected value
     """
-    remained_dice = gen_all_sequences(range(1,num_die_sides+1), num_free_dice)
+    remained_dice = gen_all_sequences(range(1, num_die_sides + 1), num_free_dice)
     possible_hand = set([tuple(list(held_dice) + list(pos_outcome)) for pos_outcome in remained_dice])
 
     temp_scores = []
     for hand in possible_hand:
         temp_scores.append(score(hand))
 
-    return float(sum(temp_scores))/len(temp_scores)
+    return float(sum(temp_scores)) / len(temp_scores)
 
 
 def gen_all_holds(hand):
@@ -73,9 +74,34 @@ def gen_all_holds(hand):
 
     Returns a set of tuples, where each tuple is dice to hold
     """
-    for i
+
+    # hand = tuple((1, 2, 2))
+    # set([(), (1,), (2,), (1, 2), (2, 2), (1, 2, 2)]), "Test #3:")
+    # ()
+    # (1,)
+    # (2,)
+    # (2,) X
+    # (1, 2)
+    # (1, 2) X
+    # (1, 2, 2)
 
 
+
+    answer_set = set([()])
+    for idx in range(len(hand)):
+        new_element.append(hand[idx])
+        for el in new_element:
+            answer_set.add(new_element)
+        # temp_set = ()
+        # for partial_sequence in answer_set:
+        #     for item in hand:
+        #
+        #         new_sequence = list(partial_sequence)
+        #         new_sequence.append(item)
+        #         temp_set.add(tuple(sorted(new_sequence)))
+        # answer_set = temp_sets
+    return answer_set
+print gen_all_holds((1, 2, 2))
 
 def strategy(hand, num_die_sides):
     """
@@ -99,14 +125,14 @@ def run_example():
     hand = [random.randrange(1, 7) for i in range(6)]
     hand_score, hold = strategy(hand, num_die_sides)
     print "Best strategy for hand", hand, "is to hold", hold, "with expected score", hand_score
-    
-    
+
+
 run_example()
 
 # ya_test.test_score(score)
 # Works
 
-ya_test.test_expected_value(expected_value)
+# ya_test.test_expected_value(expected_value)
 
 
 #import poc_holds_testsuite
