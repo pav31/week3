@@ -33,15 +33,15 @@ def score(hand):
 
     Returns an integer score 
     """
-    tmp = 0
-    big = 0
-    for i in hand:
-        tmp = i * hand.count(i)
+    temp = 0
+    highest = 0
+    for die in hand:
+        temp = die * hand.count(die)
 
-        if tmp > big:
-            big = tmp
+        if temp > highest:
+            highest = temp
 
-    return big
+    return highest
 
 
 def expected_value(held_dice, num_die_sides, num_free_dice):
@@ -55,10 +55,31 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 
     Returns a floating point expected value
     """
-    held_dice = 2
-    num_die_sides = 6
-    num_free_dice = 4
-    return 5.0555556
+    remained_dice = gen_all_sequences(range(1,num_die_sides+1), num_free_dice)
+    possible_hand = set([tuple(list(held_dice) + list(pos_outcome)) for pos_outcome in remained_dice])
+    # return possible_hand
+    max_value = 0
+    temp_scores = {}
+    max_scores = {}
+    for hand in possible_hand:
+        score_hand = score(hand)
+        temp_scores[hand] = score_hand
+        if score_hand >= max_value:
+            max_value = score_hand
+
+    for hand, value in temp_scores.items():
+        if value == max_value:
+            max_scores[hand] = value
+
+        # for dummy_idx in range(len(possible_hand)):
+
+    return max_scores
+
+# held_dice plus num_free_dice
+held_dice = (2, 2)
+num_die_sides = 6
+num_free_dice = 3
+print expected_value(held_dice, num_die_sides, num_free_dice)
 
 
 def gen_all_holds(hand):
@@ -102,7 +123,7 @@ run_example()
 # ya_test.run_score(score)
 # Works
 
-ya_test.run_expected_value(expected_value)
+# ya_test.run_expected_value(expected_value)
 
 
 #import poc_holds_testsuite
