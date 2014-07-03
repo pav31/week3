@@ -94,8 +94,8 @@ def gen_all_holds(hand):
         answer_set.add(tuple(temp_set))
     return answer_set
 
-print gen_all_holds((1, 2, 3))
-print gen_all_holds((2, 3, 4))
+print gen_all_holds((1, 2, 2))
+
 
 
 
@@ -131,7 +131,7 @@ run_example()
 # ya_test.test_expected_value(expected_value)
 # Works
 
-ya_test.test_gen_all_holds(gen_all_holds)
+# ya_test.test_gen_all_holds(gen_all_holds)
 
 
 # ya_test.test_strategy(strategy)

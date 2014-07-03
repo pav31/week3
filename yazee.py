@@ -84,24 +84,17 @@ def gen_all_holds(hand):
     # (1, 2)
     # (1, 2) X
     # (1, 2, 2)
+    #
 
+    result = [[]]
+    for x in hand:
+        result += [y + [x] for y in result]
+    final = set([()])
+    for item in result:
+        final.add(tuple(item))
 
-
-    answer_set = set([()])
-    for idx in range(len(hand)):
-        new_element.append(hand[idx])
-        for el in new_element:
-            answer_set.add(new_element)
-        # temp_set = ()
-        # for partial_sequence in answer_set:
-        #     for item in hand:
-        #
-        #         new_sequence = list(partial_sequence)
-        #         new_sequence.append(item)
-        #         temp_set.add(tuple(sorted(new_sequence)))
-        # answer_set = temp_sets
-    return answer_set
-print gen_all_holds((1, 2, 2))
+    return final
+print gen_all_holds((1, 2, 3))
 
 def strategy(hand, num_die_sides):
     """
@@ -133,7 +126,9 @@ run_example()
 # Works
 
 # ya_test.test_expected_value(expected_value)
+# Works
 
+ya_test.test_gen_all_holds(gen_all_holds)
 
 #import poc_holds_testsuite
 #poc_holds_testsuite.run_suite(gen_all_holds)

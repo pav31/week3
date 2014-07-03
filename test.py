@@ -161,16 +161,16 @@ row = [
 [1, 5, 10, 10, 5, 1],
 [1, 6, 15, 20, 15, 6, 1]
 ]
-print "sum0", sum([1])
-print "sum1", sum([1, 1])
-print "sum2", sum([1, 2, 1])
-print "sum3", sum([1, 3, 3, 1])
-print "sum4", sum([1, 4, 6, 4, 1])
-print "sum5", sum([1, 5, 10, 10, 5, 1])
-print "sum6", sum([1, 6, 15, 20, 15, 6, 1])
-for n in range(7):
-    print "2^%d" % n, 2**n
-print
+# print "sum0", sum([1])
+# print "sum1", sum([1, 1])
+# print "sum2", sum([1, 2, 1])
+# print "sum3", sum([1, 3, 3, 1])
+# print "sum4", sum([1, 4, 6, 4, 1])
+# print "sum5", sum([1, 5, 10, 10, 5, 1])
+# print "sum6", sum([1, 6, 15, 20, 15, 6, 1])
+# for n in range(7):
+#     print "2^%d" % n, 2**n
+# print
 
 
 n_entry = 3
@@ -192,3 +192,25 @@ print "10", float(math.factorial(m_row)) / (math.factorial(m_row - n_entry) * ma
 # for n in range(len(set_t)):
 #     m!/(m-n)!*n!
 
+tup = (2,1,2)
+st =set([()])
+for i in range(3):
+    temp = []
+    for j in range(i, 3):
+        tup_new = list(tup)
+        temp.append(tup_new[j])
+        st.add(tuple(temp))
+print st
+
+def subsets(my_set):
+    result = [[]]
+    for x in my_set:
+        result += [y + [x] for y in result]
+
+    final = set([()])
+    for item in result:
+        final.add(tuple(item))
+
+    return final
+set([(), (1,), (2,), (1, 2), (2, 1), (2, 2), (2, 1, 2)])
+print subsets(tup)
