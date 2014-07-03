@@ -1,8 +1,6 @@
 import math
 
 print "3!", math.factorial(3)
-print "3!", math.factorial(3)
-print "3!", math.factorial(3)
 
 # # Lotery - 59 balls, draw 6, order is important
 #
