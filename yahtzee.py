@@ -65,14 +65,6 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
     return float(sum(temp_scores))/len(temp_scores)
 
 
-
-# held_dice plus num_free_dice
-held_dice = (2, 2)
-num_die_sides = 6
-num_free_dice = 3
-print expected_value(held_dice, num_die_sides, num_free_dice)
-
-
 def gen_all_holds(hand):
     """
     Generate all possible choices of dice from hand to hold.
@@ -111,10 +103,12 @@ def run_example():
     
 run_example()
 
-# ya_test.run_score(score)
+# ya_test.test_score(score)
 # Works
 
-ya_test.run_expected_value(expected_value)
+# ya_test.test_expected_value(expected_value)
+# Works
+
 
 
 #import poc_holds_testsuite

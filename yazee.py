@@ -99,10 +99,10 @@ def run_example():
     
 run_example()
 
-# ya_test.run_score(score)
+# ya_test.test_score(score)
 # Works
 
-# ya_test.run_expected_value(expected_value)
+ya_test.test_expected_value(expected_value)
 
 
 #import poc_holds_testsuite
