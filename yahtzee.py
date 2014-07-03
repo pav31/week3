@@ -80,16 +80,17 @@ def gen_all_holds(hand):
     # hand = tuple((2, 1, 2))
     # suite.run_test(gen_all_holds(hand), set([(), (1,), (2,), (1, 2), (2, 1), (2, 2), (2, 1, 2)]), "Test #4:")
     #
-    answer_set = set([()])
-    for dummy_idx in range(len(hand)):
-        temp_set = set()
-        # for partial_sequence in answer_set:
-        for item in hand:
-            new_sequence = list(partial_sequence)
-            new_sequence.append(item)
-            temp_set.add(tuple(sorted(new_sequence)))
-        answer_set = temp_set
-    return answer_set
+
+    # answer_set = set([()])
+    # for dummy_idx in range(len(hand)):
+    #     temp_set = set()
+    #     # for partial_sequence in answer_set:
+    #     for item in hand:
+    #         new_sequence = list(partial_sequence)
+    #         new_sequence.append(item)
+    #         temp_set.add(tuple(sorted(new_sequence)))
+    #     answer_set = temp_set
+    # return answer_set
 
 
 

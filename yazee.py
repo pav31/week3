@@ -55,10 +55,14 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 
     Returns a floating point expected value
     """
-    held_dice = 2
-    num_die_sides = 6
-    num_free_dice = 4
-    return 5.0555556
+    remained_dice = gen_all_sequences(range(1,num_die_sides+1), num_free_dice)
+    possible_hand = set([tuple(list(held_dice) + list(pos_outcome)) for pos_outcome in remained_dice])
+
+    temp_scores = []
+    for hand in possible_hand:
+        temp_scores.append(score(hand))
+
+    return float(sum(temp_scores))/len(temp_scores)
 
 
 def gen_all_holds(hand):
