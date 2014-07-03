@@ -95,6 +95,7 @@ def gen_all_holds(hand):
     return answer_set
 
 print gen_all_holds((1, 2, 3))
+print gen_all_holds((2, 3, 4))
 
 
 
