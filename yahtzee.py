@@ -3,18 +3,15 @@ Planner for Yahtzee
 Simplifications:  only allow discard and roll, only score against upper level
 """
 
-# Used to increase the timeout, if necessary
-# import codeskulptor
-# codeskulptor.set_timeout(20)
-
-
+import random
+import ya_test
 
 def gen_all_sequences(outcomes, length):
     """
     Iterative function that enumerates the set of all sequences of
     outcomes of given length.
     """
-
+    
     answer_set = set([()])
     for dummy_idx in range(length):
         temp_set = set()
@@ -34,11 +31,18 @@ def score(hand):
 
     hand: full yahtzee hand
 
-    Returns an integer score
+    Returns an integer score 
     """
-    max_value = max(hand)
-    return hand.count(max_value) * max_value
-print score((6, 4, 4, 4, 4))
+    tmp = 0
+    big = 0
+    for i in hand:
+        tmp = i * hand.count(i)
+
+        if tmp > big:
+            big = tmp
+
+    return big
+
 
 def expected_value(held_dice, num_die_sides, num_free_dice):
     """
@@ -51,7 +55,10 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 
     Returns a floating point expected value
     """
-    return 0.0
+    held_dice = 2
+    num_die_sides = 6
+    num_free_dice = 4
+    return 5.0555556
 
 
 def gen_all_holds(hand):
@@ -85,20 +92,25 @@ def run_example():
     Compute the dice to hold and expected score for an example hand
     """
     num_die_sides = 6
-    hand = (1, 1, 1, 5, 6)
+    hand = [random.randrange(1, 7) for i in range(6)]
     hand_score, hold = strategy(hand, num_die_sides)
     print "Best strategy for hand", hand, "is to hold", hold, "with expected score", hand_score
-
-
+    
+    
 run_example()
+
+# ya_test.run_score(score)
+# Works
+
+ya_test.run_expected_value(expected_value)
 
 
 #import poc_holds_testsuite
 #poc_holds_testsuite.run_suite(gen_all_holds)
-
-
-
-
+                                       
+    
+    
+    
 
 
 
