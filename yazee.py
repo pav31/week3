@@ -89,6 +89,7 @@ def gen_all_holds(hand):
     result = [[]]
     for x in hand:
         result += [y + [x] for y in result]
+
     final = set([()])
     for item in result:
         final.add(tuple(item))
@@ -128,7 +129,7 @@ run_example()
 # ya_test.test_expected_value(expected_value)
 # Works
 
-ya_test.test_gen_all_holds(gen_all_holds)
+# ya_test.test_gen_all_holds(gen_all_holds)
 
 #import poc_holds_testsuite
 #poc_holds_testsuite.run_suite(gen_all_holds)
