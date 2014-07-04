@@ -5,7 +5,7 @@ Simplifications:  only allow discard and roll, only score against upper level
 
 import random
 import ya_test
-
+DICE_IN_GAME = 5
 
 def gen_all_sequences(outcomes, length):
     """
@@ -76,27 +76,15 @@ def gen_all_holds(hand):
     Returns a set of tuples, where each tuple is dice to hold
     """
 
-    # hand = tuple((1, 2, 2))
-    # suite.run_test(gen_all_holds(hand), set([(), (1,), (2,), (1, 2), (2, 2), (1, 2, 2)]), "Test #3:")
-    #
-    # hand = tuple((2, 1, 2))
-    # suite.run_test(gen_all_holds(hand), set([(), (1,), (2,), (1, 2), (2, 1), (2, 2), (2, 1, 2)]), "Test #4:")
-    #
-    answer_set = set([()])
-    temp_set = set([()])
-    for dummy_idx in range(len(hand)):
-        temp_set.add(tuple(answer_set))
-        for partial_sequence in answer_set:
-            for item in hand:
-                new_sequence = list(partial_sequence)
-                new_sequence.append(item)
-                temp_set.add(tuple(new_sequence))
-        answer_set.add(tuple(temp_set))
-    return answer_set
+    all_holds_list = [[]]
+    for die in hand:
+        all_holds_list += [dummy_die + [die] for dummy_die in all_holds_list]
 
-print gen_all_holds((1, 2, 2))
+    all_holds = set([()])
+    for single_hold in all_holds_list:
+        all_holds.add(tuple(single_hold))
 
-
+    return all_holds
 
 
 def strategy(hand, num_die_sides):
@@ -110,8 +98,21 @@ def strategy(hand, num_die_sides):
     Returns a tuple where the first element is the expected score and
     the second element is a tuple of the dice to hold
     """
-    return (0.0, ())
+    all_holds = gen_all_holds(hand)
 
+    best_strategy = (0.0 , ())
+    for held_dice in all_holds:
+
+        num_free_dice = len(hand) - len(held_dice)
+        cur_expected_value = expected_value(held_dice, num_die_sides, num_free_dice)
+        if cur_expected_value > best_strategy[0]:
+            best_strategy = (cur_expected_value, held_dice)
+    return best_strategy
+
+num_die_sides =  4
+hand =  (3, 3, 3, 3)
+print strategy(hand, num_die_sides)
+# suite.run_test(strategy(hand, num_die_sides), (12.0, (3, 3, 3, 3)), "Test #2:")
 
 def run_example():
     """
@@ -134,7 +135,7 @@ run_example()
 # ya_test.test_gen_all_holds(gen_all_holds)
 
 
-# ya_test.test_strategy(strategy)
+ya_test.test_strategy(strategy)
 
 #import poc_holds_testsuite
 #poc_holds_testsuite.run_suite(gen_all_holds)
