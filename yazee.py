@@ -95,7 +95,7 @@ def gen_all_holds(hand):
         final.add(tuple(item))
 
     return final
-print gen_all_holds((1, 2, 3))
+
 
 def strategy(hand, num_die_sides):
     """
