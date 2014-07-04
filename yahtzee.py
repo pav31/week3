@@ -5,7 +5,7 @@ Simplifications:  only allow discard and roll, only score against upper level
 
 import random
 import ya_test
-DICE_IN_GAME = 5
+
 
 def gen_all_sequences(outcomes, length):
     """
@@ -122,7 +122,7 @@ run_example()
 
 # ya_test.test_score(score)
 
-# ya_test.test_expected_value(expected_value)
+# ya_test.test_expected_value(expecteЅd_value)
 
 # ya_test.test_gen_all_holds(gen_all_holds)
 
