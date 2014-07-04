@@ -22,6 +22,7 @@ def gen_all_sequences(outcomes, length):
                 new_sequence.append(item)
                 temp_set.add(tuple(new_sequence))
         answer_set = temp_set
+
     return answer_set
 
 
@@ -34,11 +35,9 @@ def score(hand):
 
     Returns an integer score 
     """
-    temp = 0
     highest = 0
     for die in hand:
         temp = die * hand.count(die)
-
         if temp > highest:
             highest = temp
 
@@ -56,7 +55,6 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 
     Returns a floating point expected value
     """
-
     remained_dice = gen_all_sequences(range(1, num_die_sides + 1), num_free_dice)
     possible_hand = set([tuple(list(held_dice) + list(pos_outcome)) for pos_outcome in remained_dice])
 
@@ -75,7 +73,6 @@ def gen_all_holds(hand):
 
     Returns a set of tuples, where each tuple is dice to hold
     """
-
     all_holds_list = [[]]
     for die in hand:
         all_holds_list += [dummy_die + [die] for dummy_die in all_holds_list]
@@ -107,12 +104,9 @@ def strategy(hand, num_die_sides):
         cur_expected_value = expected_value(held_dice, num_die_sides, num_free_dice)
         if cur_expected_value > best_strategy[0]:
             best_strategy = (cur_expected_value, held_dice)
+
     return best_strategy
 
-num_die_sides =  4
-hand =  (3, 3, 3, 3)
-print strategy(hand, num_die_sides)
-# suite.run_test(strategy(hand, num_die_sides), (12.0, (3, 3, 3, 3)), "Test #2:")
 
 def run_example():
     """
@@ -127,15 +121,12 @@ def run_example():
 run_example()
 
 # ya_test.test_score(score)
-# Works
 
 # ya_test.test_expected_value(expected_value)
-# Works
 
 # ya_test.test_gen_all_holds(gen_all_holds)
 
-
-ya_test.test_strategy(strategy)
+# ya_test.test_strategy(strategy)
 
 #import poc_holds_testsuite
 #poc_holds_testsuite.run_suite(gen_all_holds)
